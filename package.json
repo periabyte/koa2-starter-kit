@@ -1,0 +1,37 @@
+{
+	"name": "koa2-starter-kit",
+	"version": "1.0.0",
+	"description": "Koa2 Starter Kit",
+	"main": "index.js",
+	"repository": {},
+	"author": "Paul Peria",
+	"license": "MIT",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"dependencies": {
+		"babel-plugin-transform-async-to-generator": "^6.22.0",
+		"babel-register": "^6.22.0",
+		"bcryptjs": "^2.4.3",
+		"boom": "^4.2.0",
+		"camo": "^0.12.3",
+		"dotenv": "^4.0.0",
+		"koa": "2",
+		"koa-66": "^1.0.0",
+		"koa-body": "2",
+		"koa-compose": "^2.5.1",
+		"koa-morgan": "^1.0.1",
+		"validate.js": "^0.11.1"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.22.2",
+		"babel-jest": "^19.0.0",
+		"babel-polyfill": "^6.23.0",
+		"babel-preset-koa2-node7": "^0.1.0",
+		"chai": "^3.5.0",
+		"eslint": "^3.15.0",
+		"eslint-config-airbnb-base": "^11.1.0",
+		"eslint-plugin-import": "^2.2.0"
+	}
+}

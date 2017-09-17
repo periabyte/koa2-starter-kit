@@ -1,0 +1,3 @@
+{
+  "presets": ["babel-preset-koa2-node7"]
+}
