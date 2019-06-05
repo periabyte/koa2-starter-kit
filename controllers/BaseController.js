@@ -1,5 +1,5 @@
-import validate from 'validate.js';
-import Boom from 'boom';
+import validate from "validate.js";
+import Boom from "@hapi/boom";
 
 export default class BaseController {
 	constructor(options) {
@@ -14,7 +14,7 @@ export default class BaseController {
 		try {
 			await validate.async(data, this.validation);
 		} catch (err) {
-			throw Boom.badData('Validation failed.', err);
+			throw Boom.badData("Validation failed.", err);
 		}
 	}
 
@@ -25,7 +25,9 @@ export default class BaseController {
 			if (this.Model) {
 				ctx.body = {
 					...ctx.body,
-					[this.Model.singular()]: await this.Model.create(body).save(),
+					[this.Model.singular()]: await this.Model.create(
+						body
+					).save(),
 				};
 			}
 		} catch (err) {
@@ -36,11 +38,11 @@ export default class BaseController {
 	}
 
 	async read(ctx, next) {
-		const id = ctx.params.id;
+		const { id } = ctx.params;
 
 		try {
 			const one = await this.Model.findById(id);
-			ctx.body = { ...ctx.body, [this.Model.singular()]: one.toEntity() };
+			ctx.body = { ...ctx.body, [this.Model.singular()]: one.toJSON() };
 			if (next) await next();
 		} catch (err) {
 			throw err;
@@ -50,7 +52,10 @@ export default class BaseController {
 	async index(ctx, next) {
 		try {
 			const all = await this.Model.find({});
-			ctx.body = { ...ctx.body, [this.Model.collectionName()]: all.map(d => d.toEntity()) };
+			ctx.body = {
+				...ctx.body,
+				[this.Model.collectionName()]: all.map(d => d.toJSON()),
+			};
 			if (next) await next();
 		} catch (err) {
 			throw err;

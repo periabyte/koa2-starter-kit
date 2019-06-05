@@ -1,10 +1,11 @@
-import Router from 'koa-66';
-import AuthController from '../controllers/AuthController';
-import verifyPassword from '../middlewares/verifyPassword';
+import Router from "koa-trie-router";
+import passport from "koa-passport";
+import AuthController from "../controllers/AuthController";
+import verifyPassword from "../middlewares/verifyPassword";
 
 const router = new Router();
 const auth = new AuthController();
-router.post('/register', auth.register);
-router.post('/login', auth.login, verifyPassword);
+router.post("/register", auth.checkUnique, auth.register);
+router.post("/login", passport.authenticate("local"), auth.login);
 
 export default router;

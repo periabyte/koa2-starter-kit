@@ -1,3 +1,4 @@
 {
-  "presets": ["babel-preset-koa2-node7"]
+  "presets": ["@babel/env"],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }

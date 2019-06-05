@@ -1,13 +1,18 @@
 {
-	"extends": "airbnb-base",
-	"plugins": [
-		"import"
-	],
-	"rules": {
-		"no-param-reassign": 0,
-		"no-underscore-dangle": 0,
-		"indent": ["error", "tab"],
-		"no-restricted-syntax": 0,
-		"no-tabs": 0
-	}
+    "extends": ["airbnb-base", "prettier"],
+    "parser": "babel-eslint",
+    "plugins": ["import", "prettier"],
+    "rules": {
+        "indent": ["warn", "tab"],
+        "arrow-parens": ["warn", "as-needed"],
+        "comma-dangle": [1, "only-multiline"],
+        "no-trailing-spaces": ["warn"],
+        "no-param-reassign": 0,
+        "no-unused-vars": 0,
+        "consistent-return": 0,
+        "class-methods-use-this": 1,
+        "prettier/prettier": ["error"],
+        "no-underscore-dangle": 0,
+        "func-names": 0
+    }
 }

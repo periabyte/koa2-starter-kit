@@ -1,10 +1,15 @@
-import { connect } from 'camo';
+import { connect } from "mongoose";
 
-export default async (ctx, next) => {
+export default async () => {
 	try {
-		await connect(process.env.DB);
-		console.log('connected to database.');
-		return await next();
+		const { DB_HOST: host, DB_NAME: name, DB_PORT: port } = process.env;
+		if (!name) throw new Error("DB_NAME is required.");
+		await connect(
+			`mongodb://${host || "localhost"}:${port || "27017"}/${name}`,
+			{ useNewUrlParser: true }
+		);
+		// eslint-disable-next-line no-console
+		console.log("connected to the database:", name);
 	} catch (err) {
 		throw err;
 	}
